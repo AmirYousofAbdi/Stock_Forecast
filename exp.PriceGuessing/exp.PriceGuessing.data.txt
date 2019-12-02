@@ -1,0 +1,4 @@
+Istanbul,Tehran,3,4
+Istanbul,Dubai,1,5
+Istanbul,Shanghai,2,11
+Istanbul,LosAngeles,14,14
