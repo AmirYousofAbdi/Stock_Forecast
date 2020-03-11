@@ -51,112 +51,112 @@ end = False
 ##    pg.display.update()
 ##    pg.time.Clock().tick(100)
 '''    soal 2     '''
-##def check(ls,x,y):
-##    for i in range(len(ls)):
-##
-##        xd = int(ls[i][0])
-##        yd = int(ls[i][1])
-##        if ((xd <= x <= xd + 50) and (yd <= y <= yd + 50)) or ((x <= xd <= x + 50) and (y <= yd <= y + 50)):
-##            return False
-##    return True
-##def change(ls,x,y):
-##    for i in range(len(ls)):
-##        xd = int(ls[i][0])
-##        yd = int(ls[i][1])
-##        if (xd <= x <= xd + 50) and (yd <= y <= yd + 50):
-##            return i
-##    return 0    
-##            
-##ls = [[rm(0,550),rm(0,550)]]
-##
-##for i in range(9):
-##    x = int(rm(0,550))
-##    y = int(rm(0,550))
-##    while not check(ls,x,y):
-##        x = rm(0,550)
-##        y = rm(0,550)
-##
-##    ls.append([x,y])
-##
-##t = 0
-##deltax1 = 0
-##deltay1 = 0
-##j = 0
-##while not end:
-##
-##
-##    for event in pg.event.get():
-##
-##        if event.type == pg.KEYUP:
-##            deltay1 = deltax1 = 0
-##            
-##        if event.type == pg.KEYDOWN:
-##            
-##            if event.key == pg.K_UP:
-##                deltay1 = -1
-##                j = 1
-##                
-##            if event.key == pg.K_DOWN:
-##                deltay1 = 1
-##                j = 2
-##                
-##            if event.key == pg.K_LEFT:
-##                deltax1 = -1
-##                j = 3
-##                
-##            if event.key == pg.K_RIGHT:
-##                deltax1 = 1
-##                j = 4
-##
-##
-##
-##        
-##        if event.type == pg.MOUSEBUTTONDOWN:
-##            x , y = pg.mouse.get_pos()
-##            t = change(ls,x,y)
-##            #print(t)
-##    x = ls[t][0]
-##    y = ls[t][1]
-##
-##    for i in range(10):
-##        x1 = ls[i][0]
-##        y1 = ls[i][1]
-##
-##        if (x1 == x + 50  and y1 <= y + 50 <= y1 + 50) or (x1 == x + 50  and y  <= y1+50  <= y+50):
-##
-##            deltay1 = 0
-##
-##            deltax1 = 0
-##                
-##        elif (x  == x1 + 50  and y1 <= y + 50 <= y1 + 50) or (x == x1 + 50  and y  <= y1+50  <= y+50):
-##
-##            deltay1 = 0
-##
-##            deltax1 = 0
-##
-##        elif (y1 == y + 50  and x1 <= x + 50 <= x1 + 50) or (y1 == y + 50  and x  <= x1+50  <= x+50):
-##
-##            deltay1 = 0
-##
-##            deltax1 = 0
-##                
-##        elif (y  == y1 + 50  and x1 <= x + 50 <= x1 + 50) or (y == y1 + 50  and x  <= x1+50  <= x+50):
-##
-##            deltay1 = 0
-##
-##            deltax1 = 0
-##                    
-##
-##    ls[t][0] += deltax1
-##    ls[t][1] += deltay1
-##    disp.fill((255,255,255))
-##    for k in range(10):
-##        i = ls[k]
-##        
-##        pg.draw.rect(disp,(k * 20,k * 10,k * 5),(i[0],i[1],50 , 50))
-##    
-##    pg.display.update()
-##    pg.time.Clock().tick(60)
+def check(ls,x,y):
+    for i in range(len(ls)):
+
+        xd = int(ls[i][0])
+        yd = int(ls[i][1])
+        if ((xd <= x <= xd + 50) and (yd <= y <= yd + 50)) or ((x <= xd <= x + 50) and (y <= yd <= y + 50)):
+            return False
+    return True
+def change(ls,x,y):
+    for i in range(len(ls)):
+        xd = int(ls[i][0])
+        yd = int(ls[i][1])
+        if (xd <= x <= xd + 50) and (yd <= y <= yd + 50):
+            return i
+    return 0    
+            
+ls = [[rm(0,550),rm(0,550)]]
+
+for i in range(9):
+    x = int(rm(0,550))
+    y = int(rm(0,550))
+    while not check(ls,x,y):
+        x = rm(0,550)
+        y = rm(0,550)
+
+    ls.append([x,y])
+
+t = 0
+deltax1 = 0
+deltay1 = 0
+j = 0
+while not end:
+
+
+    for event in pg.event.get():
+
+        if event.type == pg.KEYUP:
+            deltay1 = deltax1 = 0
+            
+        if event.type == pg.KEYDOWN:
+            
+            if event.key == pg.K_UP:
+                deltay1 = -1
+                j = 1
+                
+            if event.key == pg.K_DOWN:
+                deltay1 = 1
+                j = 2
+                
+            if event.key == pg.K_LEFT:
+                deltax1 = -1
+                j = 3
+                
+            if event.key == pg.K_RIGHT:
+                deltax1 = 1
+                j = 4
+
+
+
+        
+        if event.type == pg.MOUSEBUTTONDOWN:
+            x , y = pg.mouse.get_pos()
+            t = change(ls,x,y)
+            #print(t)
+    x = ls[t][0]
+    y = ls[t][1]
+
+    for i in range(10):
+        x1 = ls[i][0]
+        y1 = ls[i][1]
+
+        if (x1 == x + 50  and y1 <= y + 50 <= y1 + 50) or (x1 == x + 50  and y  <= y1+50  <= y+50):
+
+            deltay1 = 0
+
+            deltax1 = 0
+                
+        elif (x  == x1 + 50  and y1 <= y + 50 <= y1 + 50) or (x == x1 + 50  and y  <= y1+50  <= y+50):
+
+            deltay1 = 0
+
+            deltax1 = 0
+
+        elif (y1 == y + 50  and x1 <= x + 50 <= x1 + 50) or (y1 == y + 50  and x  <= x1+50  <= x+50):
+
+            deltay1 = 0
+
+            deltax1 = 0
+                
+        elif (y  == y1 + 50  and x1 <= x + 50 <= x1 + 50) or (y == y1 + 50  and x  <= x1+50  <= x+50):
+
+            deltay1 = 0
+
+            deltax1 = 0
+                    
+
+    ls[t][0] += deltax1
+    ls[t][1] += deltay1
+    disp.fill((255,255,255))
+    for k in range(10):
+        i = ls[k]
+        
+        pg.draw.rect(disp,(k * 20,k * 10,k * 5),(i[0],i[1],50 , 50))
+    
+    pg.display.update()
+    pg.time.Clock().tick(60)
 '''   soal 3    '''
 ##ls = []
 ##for i in range(60):
