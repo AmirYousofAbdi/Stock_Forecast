@@ -1,5 +1,6 @@
 import pandas as pd
-
+from sklearn.metrics import accuracy_score
+from random import shuffle as sh
 def loadData(n):
     
 
@@ -26,12 +27,11 @@ def loadData(n):
     
     return x_train[n:] , x_train[:n] , y_train[:n] , [] , y_train[n:]
 
-n = int(input('Train data: '))
+n = int(0.7 * 150)
 
-x_test , x_train , y_train , y_test , act_y_test = loadData(n)
+x_test , x_train , y_train , y_test , _ = loadData(n)
 k = 7
 difference = []
-incorrect_answer = 0
 
 for each_flower in range(len(x_test)):
     ls = []
@@ -63,10 +63,10 @@ for each_flower in range(len(difference)):
     classes.sort()
     y_test.append(classes[2][1])
     
-    if y_test[-1] != act_y_test[each_flower]:
-        incorrect_answer +=1
+  
         
     
 print(*y_test,sep='\n')
-print(incorrect_answer)
+
+print(accuracy_score(y_true = y_test, y_pred = act_y_test))
 
