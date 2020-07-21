@@ -6,8 +6,11 @@ dataset = pd.read_csv('iris22.csv',names=names)
 
 x_train = []
 y_train = []
+y_test = []
+x_test = []
 n = int(input('Train data: '))
 k = 7
+
 for flower in range(150):
     
     sepal_area = dataset['sepal-width'][flower] * dataset['sepal-length'][flower]
@@ -19,16 +22,16 @@ x_test , x_train , y_train = x_train[n:] , x_train[:n] , y_train[:n]
 
 difference = []
 
-for i in range(len(x_test)):
+for each_flower in range(len(x_test)):
     ls = []
     for flower in range(n):
-        sepal_difference = abs(x_test[i][0] - x_train[flower][0])
-        petal_difference = abs(x_test[i][1] - x_train[flower][1])
+        sepal_difference = abs(x_test[each_flower][0] - x_train[flower][0])
+        petal_difference = abs(x_test[each_flower][1] - x_train[flower][1])
         ls.append([sepal_difference+ petal_difference,y_train[flower]])
     ls.sort()
     difference.append(ls)
 
-y_test = []
+
 for each_flower in range(len(difference)):
     class_virginica = 0
     class_versicolor = 0
