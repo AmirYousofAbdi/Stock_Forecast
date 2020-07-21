@@ -1,9 +1,10 @@
-def loadDataa(n):
+import pandas as pd
+
+def loadData(n):
     
 
 
-    import pandas as pd
-
+    
     names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
 
     dataset = pd.read_csv('iris22.csv',names=names)
@@ -15,7 +16,7 @@ def loadDataa(n):
 
 
 
-    for flower in range(150):
+    for flower in range(len(dataset['class'])):
         
         sepal_area = dataset['sepal-width'][flower] * dataset['sepal-length'][flower]
         petal_area = dataset['petal-width'][flower] * dataset['petal-length'][flower]
@@ -23,13 +24,14 @@ def loadDataa(n):
         y_train.append(dataset['class'][flower])
 
     
-    return x_train[n:] , x_train[:n] , y_train[:n]
+    return x_train[n:] , x_train[:n] , y_train[:n] , [] , y_train[n:]
 
 n = int(input('Train data: '))
 
-x_test , x_train , y_train = loadData(n)
+x_test , x_train , y_train , y_test , act_y_test = loadData(n)
 k = 7
 difference = []
+incorrect_answer = 0
 
 for each_flower in range(len(x_test)):
     ls = []
@@ -55,9 +57,16 @@ for each_flower in range(len(difference)):
         elif difference[each_flower][nn][1] == 'Iris-virginica':
             class_virginica +=1
     
-    classes = [[class_virginica,'Iris-virginica'],[class_versicolor,'Iris-versicolor'],[class_setosa,'Iris-setosa']]
+    classes = [[class_virginica,'Iris-virginica'],[class_versicolor,'Iris-versicolor'],
+               [class_setosa,'Iris-setosa']]
     
     classes.sort()
     y_test.append(classes[2][1])
     
+    if y_test[-1] != act_y_test[each_flower]:
+        incorrect_answer +=1
+        
+    
 print(*y_test,sep='\n')
+print(incorrect_answer)
+
